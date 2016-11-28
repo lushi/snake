@@ -4,7 +4,7 @@
   "description": "JavaScript implementation of the class game Snake using HTML canvas",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "keywords": [],
   "author": "Lushi Li",
