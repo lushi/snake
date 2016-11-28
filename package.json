@@ -8,5 +8,8 @@
   },
   "keywords": [],
   "author": "Lushi Li",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^1.13.3"
+  }
 }
