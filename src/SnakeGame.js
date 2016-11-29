@@ -1,6 +1,9 @@
+const SnakeLine = require("./SnakeLine.js");
+
 class SnakeGame {
   constructor(store) {
     this.store = store;
+    this.line = new SnakeLine();
   }
 
   init() {
@@ -26,15 +29,17 @@ class SnakeGame {
   }
 
   _draw(ctx) {
+    let state = this._getState();
     ctx.save();
-    this._drawBorder(ctx);
+    this._drawBorder(ctx, state);
+    this.line.draw(ctx, state.line, state.TILE_SIZE);
     ctx.restore();
   }
 
-  _drawBorder(ctx) {
-    const tile_size = this._getState().TILE_SIZE;
-    const width = this._getState().WIDTH * tile_size;
-    const height = this._getState().HEIGHT * tile_size;
+  _drawBorder(ctx, state) {
+    const tile_size = state.TILE_SIZE;
+    const width = state.WIDTH * tile_size;
+    const height = state.HEIGHT * tile_size;
     const offset = tile_size * (3/4); // offset is center of where line will be drawn
 
     ctx.save();
