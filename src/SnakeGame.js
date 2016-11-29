@@ -8,6 +8,7 @@ class SnakeGame {
 
   init() {
     let ctx = this._initCanvas();
+    this._bindEvents();
     this._loop(ctx);
   }
 
@@ -26,6 +27,48 @@ class SnakeGame {
     canvas.setAttribute('height', height);
 
     return canvas.getContext('2d');
+  }
+
+  _bindEvents() {
+    window.addEventListener('keydown', this._handleKeyDown.bind(this));
+  }
+
+  _handleKeyDown(evt) {
+    let key = evt.key;
+    let direction = this._mapKeyToDirection(key);
+
+    if (!direction) return false;
+
+    if(this._isDirectionValid(this._getState().line.direction, direction)) {
+      this.store.dispatch({
+        type: 'SET_DIRECTION',
+        data: {direction}
+      })
+    }
+  }
+
+  _mapKeyToDirection(key) {
+    const map = {
+      'ArrowLeft': 'west',
+      'ArrowUp': 'north',
+      'ArrowRight': 'east',
+      'ArrowDown': 'south'
+    };
+
+    return map[key];
+  }
+
+  _isDirectionValid(prevDir, nextDir) {
+    switch (prevDir) {
+      case 'west': // fall through
+      case 'east':
+        return nextDir == 'north' || nextDir == 'south';
+      case 'north':
+      case 'south':
+        return nextDir == 'east' || nextDir == 'west';
+      default:
+        throw new Error('prevDir is invalid.');
+    }
   }
 
   _loop(ctx) {

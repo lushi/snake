@@ -27,6 +27,12 @@ const reducer = (state, action) => {
 
       let newLine = Object.assign({}, state.line, {body: newBody});
       return Object.assign({}, state, {line: newLine});
+
+    case 'SET_DIRECTION':
+      let dir = action.data.direction;
+      let lineState = state.line;
+      let newLineState = Object.assign({}, lineState, { direction: dir });
+      return Object.assign({}, state, {line: newLineState});
     default:
       return state;
   }
