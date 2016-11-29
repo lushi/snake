@@ -3,7 +3,9 @@ class Snake {
     this.store = store;
   }
 
-  init() {}
+  init() {
+    return "HAI2U";
+  }
 }
 
 module.exports = Snake;

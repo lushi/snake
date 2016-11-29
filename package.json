@@ -4,7 +4,8 @@
   "description": "JavaScript implementation of the class game Snake using HTML canvas",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start": "node_modules/.bin/webpack && python -m SimpleHTTPServer"
   },
   "keywords": [],
   "author": "Lushi Li",
