@@ -1,4 +1,4 @@
-class Snake {
+class SnakeGame {
   constructor(store) {
     this.store = store;
   }
@@ -50,4 +50,4 @@ class Snake {
   }
 }
 
-module.exports = Snake;
+module.exports = SnakeGame;
