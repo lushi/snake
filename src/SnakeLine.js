@@ -1,10 +1,9 @@
 class SnakeLine {
   constructor() {}
 
-  draw(ctx, state, tile_size) {
+  draw(ctx, body, tile_size) {
     ctx.save();
 
-    let body = state.body;
     body.forEach((section) => {
       this._drawSection(ctx, section, tile_size);
     });

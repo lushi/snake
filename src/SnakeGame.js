@@ -1,9 +1,11 @@
 const SnakeLine = require("./SnakeLine.js");
+const SnakeFood = require("./SnakeFood.js");
 
 class SnakeGame {
   constructor(store) {
     this.store = store;
     this.line = new SnakeLine();
+    this.food = new SnakeFood();
   }
 
   init() {
@@ -101,7 +103,8 @@ class SnakeGame {
     let state = this._getState();
     ctx.save();
     this._drawBorder(ctx, state);
-    this.line.draw(ctx, state.line, state.TILE_SIZE);
+    this.line.draw(ctx, state.line.body, state.TILE_SIZE);
+    this.food.draw(ctx, state.food, state.TILE_SIZE);
     ctx.restore();
   }
 

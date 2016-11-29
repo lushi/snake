@@ -14,7 +14,7 @@ const initialState = {
     ],
     direction: 'east' // default starting direction
   },
-  food: {pos_x: 30, pos_y: 30} // default starting position
+  food: {pos_x: 5, pos_y: 5} // default starting position
 }
 
 const store = createStore(reducer, initialState);
