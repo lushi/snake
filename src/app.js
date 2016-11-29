@@ -19,4 +19,4 @@ const initialState = {
 
 const store = createStore(reducer, initialState);
 const snake = new Snake(store);
-document.write(snake.init());
+snake.init();
