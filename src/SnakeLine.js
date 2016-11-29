@@ -1,6 +1,5 @@
 class SnakeLine {
-  constructor() {
-  }
+  constructor() {}
 
   draw(ctx, state, tile_size) {
     ctx.save();

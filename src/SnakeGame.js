@@ -8,7 +8,7 @@ class SnakeGame {
 
   init() {
     let ctx = this._initCanvas();
-    this._draw(ctx);
+    this._loop(ctx);
   }
 
   _initCanvas() {
@@ -28,7 +28,33 @@ class SnakeGame {
     return canvas.getContext('2d');
   }
 
-  _draw(ctx) {
+  _loop(ctx) {
+      let then = Date.now();
+      let state = this._getState();
+      let interval = 1000/state.FPS;
+      const width = state.WIDTH * state.TILE_SIZE;
+      const height = state.WIDTH * state.TILE_SIZE;
+
+      let now, dt;
+      let _loop = () => {
+        requestAnimationFrame(_loop);
+
+        now = Date.now();
+        dt = now - then;
+
+        if (dt > interval) {
+          then = now - (dt % interval);
+
+          ctx.clearRect(0, 0, width, height);
+          this._animate(ctx);
+        }
+      }
+
+      requestAnimationFrame(_loop);
+  }
+
+  _animate(ctx) {
+    this.store.dispatch({type: 'ADVANCE_LINE'})
     let state = this._getState();
     ctx.save();
     this._drawBorder(ctx, state);
