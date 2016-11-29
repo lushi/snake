@@ -4,7 +4,8 @@ const expect = chai.expect;
 const Snake = require("../src/Snake.js");
 
 describe("Snake", () => {
-  it("should write tests", () => {
-    expect(false).to.equal(true);
+  it("expect to have 'init' method", () => {
+    let snake = new Snake();
+    expect(snake).to.respondTo('init');
   })
 });

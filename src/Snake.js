@@ -1,5 +1,9 @@
 class Snake {
-  constructor() {}
+  constructor(store) {
+    this.store = store;
+  }
+
+  init() {}
 }
 
 module.exports = Snake;
