@@ -18,9 +18,17 @@ The way the animation works is that `init()` kicks off a (currently infinite) ga
 In addition, `init()` also binds a listener for 'keydown' event onto `window`. If the key is valid, an action is dispatched to the store to change the direction of the line. The line advances in the new direction on the next active game loop.
 
 ## How to run
-1. `$ npm install`
-2. `$ npm start`. That will compile the js files into /bundle.js, and start a simple Python server
-3. Open Chrome and navigate to http://localhost:8000/
+### From zipfile
+1. Unpack compressed file into directory
+2. `cd` into the project directory
+3. `$ python -m SimpleHTTPServer`
+4. Open Chrome and navigate to http://localhost:8000/
+
+### From Github
+1. Git clone
+2. `$ npm install`
+3. `$ npm start`. That will compile the js files into /bundle.js, and start a simple Python server
+4. Open Chrome and navigate to http://localhost:8000/
 
 ## Dependencies
 The application has no dependencies except for Webpack as the bundler in the development environment, and Mocha and Chai for testing.
