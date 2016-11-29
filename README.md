@@ -18,10 +18,9 @@ The way the animation works is that `init()` kicks off a (currently infinite) ga
 In addition, `init()` also binds a listener for 'keydown' event onto `window`. If the key is valid, an action is dispatched to the store to change the direction of the line. The line advances in the new direction on the next active game loop.
 
 ## How to run
-1. Git clone the repository
-2. `$ npm install`
-3. `$ npm start`. That will compile the js files into /bundle.js, and start a simple Python server
-4. Open Chrome and navigate to http://localhost:8000/
+1. `$ npm install`
+2. `$ npm start`. That will compile the js files into /bundle.js, and start a simple Python server
+3. Open Chrome and navigate to http://localhost:8000/
 
 ## Todo's
 I spent a good chunk of time planning out and and implementing the overral structure of the app, and ran out of time implementing all the features and adding styling. Here's a list of todos:
@@ -37,4 +36,4 @@ I spent a good chunk of time planning out and and implementing the overral struc
 
 * __styling__. I had some cool ideas and am disappointed not to have time to add styling to the game :(
 
-* __refactoring and unit testing__. The game logic in `SnakeGame()` can potentially be furthered refactored and abstracted into a module that's separate from the event handling and other particulars of the game in a browser context. This would allow the game logic by itself to be unit tested. In addition, the currently single large reducer can be divided into smaller chunks, and each should also be unit tested. Currently, only `createStore()` has unit tests, which can be run in the command line with `$ npm test`. 
+* __refactoring and unit testing__. The game logic in `SnakeGame()` can potentially be furthered refactored and abstracted into a module that's separate from the event handling and other particulars of the game in a browser context. This would allow the game logic by itself to be unit tested. In addition, the currently single large reducer can be divided into smaller chunks, and each should also be unit tested. Currently, only `createStore()` has unit tests, which can be run in the command line with `$ npm test`.
