@@ -1,8 +1,9 @@
 const reducer = (state, action) => {
+  let direction = state.line.direction;
+  let lineState = state.line;
   switch (action.type) {
     case 'ADVANCE_LINE':
-      let newBody = Object.assign([], state.line.body);
-      let direction = state.line.direction;
+      let newBody = Object.assign([], lineState.body);
       let head = Object.assign({}, newBody[0]);
 
       switch (direction) {
@@ -23,16 +24,23 @@ const reducer = (state, action) => {
       }
 
       newBody.unshift(head);
-      newBody.pop();
 
-      let newLine = Object.assign({}, state.line, {body: newBody});
-      return Object.assign({}, state, {line: newLine});
+      if (!lineState.growLine) {
+        newBody.pop();
+      }
+
+      return Object.assign({}, state, {
+        line: Object.assign({}, lineState, {body: newBody, growLine: false})
+      });
 
     case 'SET_DIRECTION':
-      let dir = action.data.direction;
-      let lineState = state.line;
-      let newLineState = Object.assign({}, lineState, { direction: dir });
+      let newLineState = Object.assign({}, state.line, { direction: action.data.direction });
       return Object.assign({}, state, {line: newLineState});
+
+    case 'GROW_LINE':
+      return Object.assign({}, state, {
+        line: Object.assign({}, state.line, { growLine: true })
+      })
     default:
       return state;
   }

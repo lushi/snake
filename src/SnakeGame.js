@@ -91,7 +91,9 @@ class SnakeGame {
           then = now - (dt % interval);
 
           ctx.clearRect(0, 0, width, height);
-          this._animate(ctx);
+          if (!this._gameOver()) {
+            this._animate(ctx);
+          }
         }
       }
 
@@ -99,6 +101,9 @@ class SnakeGame {
   }
 
   _animate(ctx) {
+    if (this._isLineOnFood()) {
+      this.store.dispatch({type: 'GROW_LINE'});
+    }
     this.store.dispatch({type: 'ADVANCE_LINE'})
     let state = this._getState();
     ctx.save();
@@ -119,6 +124,18 @@ class SnakeGame {
     ctx.rect(offset, offset, width - (offset * 2), height - (offset * 2));
     ctx.stroke();
     ctx.restore();
+  }
+
+  _gameOver() {
+    return false;
+  }
+
+
+  _isLineOnFood() {
+    let head = this._getState().line.body[0];
+    let food = this._getState().food;
+
+    return head.pos_x === food.pos_x && head.pos_y === food.pos_y;
   }
 
   // convenience function, to save some typing
