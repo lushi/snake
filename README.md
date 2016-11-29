@@ -22,6 +22,9 @@ In addition, `init()` also binds a listener for 'keydown' event onto `window`. I
 2. `$ npm start`. That will compile the js files into /bundle.js, and start a simple Python server
 3. Open Chrome and navigate to http://localhost:8000/
 
+## Dependencies
+The application has no dependencies except for Webpack as the bundler in the development environment, and Mocha and Chai for testing.
+
 ## Todo's
 I spent a good chunk of time planning out and and implementing the overral structure of the app, and ran out of time implementing all the features and adding styling. Here's a list of todos:
 
